@@ -75,11 +75,27 @@ predicts=[]
 
 for pred in preds:
     most=label[np.argmax(pred)]
-    # pred[np.argmax(pred)]=0
-    # second=label[]
-    predicts.append(most)
+    pred[np.argmax(pred)]=0
+    second=label[np.argmax(pred)]
+    predicts.append([most,second])
 
 df['predict']=predicts
 
 print(df.head(30))
+
+df['OX']=0
+
+for i in range(len(df)):
+    if df.loc[i,'category'] in df.loc[i,'predict']:
+        df.loc[i,'OX']='0'
+    else:
+        df.loc[i,'OX']='x'
+
+print(df['OX'].value_counts())
+
+print(df['OX'].value_counts()/len(df))
+
+for i in range(len(df)):
+    if df['category'][i] not in df['predict'][i]:
+        print(df.iloc[i])
 
