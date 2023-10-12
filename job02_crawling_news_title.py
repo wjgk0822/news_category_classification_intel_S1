@@ -121,7 +121,7 @@ for l in range(2):
 
             df_section_title['category']=category[l]
 
-            df_titles=pd.concat([df_titles,df_section_title],ignore_index=True)
+            #df_titles=pd.concat([df_titles,df_section_title],ignore_index=True)
 
             df_titles.to_csv('./crawling_data/crawling_data_{}_{}.csv'.format(l,k),index=False)
 
@@ -131,19 +131,21 @@ for l in range(2):
 
     df_section_title['category'] = category[l]
 
-    df_titles = pd.concat([df_titles, df_section_title], ignore_index=True)
+    #df_titles = pd.concat([df_titles, df_section_title], ignore_index=True)
 
     df_titles.to_csv('./crawling_data/crawling_data_last.csv', index=False)
+
+driver.close()
 
    # titles = []
 
 
-print(df_titles.head())
-df_titles.info()
-
-cnt=df_titles['category'].value_counts()
-
-print(cnt)
+# print(df_titles.head())
+# df_titles.info()
+#
+# cnt=df_titles['category'].value_counts()
+#
+# print(cnt)
 #print(title)
 
 # //*[@id="section_body"]/ul[1]/li[1]/dl/dt[2]/a
